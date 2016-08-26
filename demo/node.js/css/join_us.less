@@ -1,0 +1,160 @@
+/*
+	白梦超
+	20160811
+	加入我们样式
+*/
+
+
+//引用common.less
+@import "common.less";
+
+body.join_us {
+	section.banner {
+		width: 100%;
+		height: 346px;
+		background: url("/images/join_banner.jpg") center center no-repeat;
+	}
+	section.main {
+		width: @content_width;
+		margin: 10px auto 0;
+		section.join_phone {
+			padding-top: 40px;
+			h3 {
+				p {
+					width: 450px;
+					height: 40px;
+					.bp(-347px; -2px; _bai_03);
+					margin: 0 auto;
+				}
+			}
+			p.content_p {
+				line-height: 24px;
+				font-size: 13px;
+				text-align: center;
+				margin-top: 20px;
+			}
+		}
+		section.join_pic {
+			margin-top: 80px;
+			position: relative;
+			div.phone_bg {
+				width: 354px;
+				height: 597px;
+				background: url("/images/join_phone.png") 0 0 no-repeat;
+				margin: 0 auto;
+				position: relative;
+			}
+			div {
+				width: 300px;
+				position: absolute;
+				span {
+					width: 42px;
+					height: 40px;
+					float: left;
+				}
+				dl {
+					width: 230px;
+					float: right;
+					dt {
+						height: 30px;
+						line-height: 30px;
+						font-size: 16px;
+						color: @color_333;
+					}
+					dd {
+						line-height: 22px;
+						font-size: 12px;
+						color: @color_333;
+					}
+				}
+				&:after {
+					.clear();
+				}
+			}
+			div.content_1 {
+				left: 98px;
+				top: 103px;
+				span {
+					.bp(-168px; -47px; _bai_03);
+				}	
+			}
+			div.content_2 {
+				left: 810px;
+				top: 103px;
+				span {
+					.bp(-257px; -46px; _bai_03);
+				}	
+			}
+			div.content_3 {
+				left: 98px;
+				top: 305px;
+				span {
+					.bp(-168px; -110px; _bai_03);
+				}	
+			}
+			div.content_4 {
+				left: 810px;
+				top: 305px;
+				span {
+					.bp(-256px; -110px; _bai_03);
+				}	
+			}
+		}
+		section.map {
+			width: 1124px;
+			height: 415px;
+			margin: 40px auto 100px;
+			overflow: hidden;
+			position: relative;
+			div#baidu_map {
+				height: 415px;
+				width: 1124px;
+			}
+			div.contact {
+				width: 265px;
+				height: 256px;
+				background: @bg_foot;
+				position: absolute;
+				right: 125px;
+				top: 0px;
+				p.content_1 {
+					font-size: 20px;
+					text-align: center;
+					line-height: 30px;
+					color: @color_fff;
+					margin-top: 40px;
+				}
+				p.content_2 {
+					font-size: 37px;
+					text-align: center;
+					line-height: 50px;
+					color: @color_fff;
+					font-family: arial;
+					font-weight: bold;
+				}
+				p.content_3 {
+					font-size: 14px;
+					text-align: center;
+					line-height: 36px;
+					color: @color_fff;
+					font-family: arial;
+					margin-bottom: 10px;
+				}
+				p.content_4 {
+					font-size: 14px;
+					text-align: center;
+					line-height: 36px;
+					color: @color_fff;
+					font-family: arial;
+				}
+				p.content_5 {
+					font-size: 14px;
+					text-align: center;
+					line-height: 36px;
+					color: @color_fff;
+					font-family: arial;
+				}
+			}
+		}
+	}
+}

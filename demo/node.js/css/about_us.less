@@ -1,0 +1,110 @@
+/*
+	白梦超
+	20160804
+	关于我们样式
+*/
+
+//引用common.less
+@import "common.less";
+
+body.about_us {
+	//banner样式
+	section.banner {
+		width: 100%;
+		height: 346px;
+		background: url("/images/about_banner.jpg") center center no-repeat;
+	}
+	section.main {
+		width: @content_width;
+		margin: 10px auto 0;
+		section.content {
+			margin-top: 30px;
+			width: 1120px;
+			margin-left: 40px;
+			p {
+				line-height: 24px;
+				padding: 10px 0;
+				text-indent: 2em;
+			}
+		}
+		//五大优势样式
+		section.advantage {
+			width: 1120px;
+			margin: 50px auto 0;
+			h3 {
+				height: 50px;
+				p {
+					width: 180px;
+					height: 40px;
+					margin: 0 auto;
+					.bp(-940px; -19px; _bai_01);
+				}
+			}
+			dl {
+				width: 167px;
+				float: left;
+				margin-left: 63px;
+				margin-top: 40px;
+				dt {
+					width: 167px;
+					height: 167px;
+				}
+				dd {
+					width: 167px;
+					height: 30px;
+					line-height: 30px;
+					font-size: 18px;
+					text-align: center;
+					margin-top: 10px;
+				}
+			}
+			dl.dl_1{
+				margin-left: 19px;
+				dt {
+					.bp (-1px; -1px; _bai_01);
+				}
+			}
+			dl.dl_2{
+				dt {
+					.bp (-174px; -1px; _bai_01);
+				}
+			}
+			dl.dl_3{
+				dt {
+					.bp (-347px; -1px; _bai_01);
+				}
+			}
+			dl.dl_4{
+				dt {
+					.bp (-520px; -1px; _bai_01);
+				}
+			}
+			dl.dl_5{
+				dt {
+					.bp (-693px; -1px; _bai_01);
+				}
+			}
+			&:after{
+				.clear();
+			}
+		}
+		//组织结构样式
+		section.organization {
+			margin-top: 70px;
+			margin-bottom: 100px;
+			h3 {
+				height: 50px;
+				p {
+					width: 220px;
+					height: 40px;
+					margin: 0 auto;
+					.bp(-923px; -104px; _bai_01);
+				}
+			}
+			img {
+				margin-left: 30px;
+				margin-top: 35px;
+			}
+		}
+	}
+}
