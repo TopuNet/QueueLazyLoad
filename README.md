@@ -1,4 +1,4 @@
-# QueueLazyLoad 插件 v1.0.1
+# QueueLazyLoad 插件 v1.0.2
 ###按照队列顺序延迟(懒)加载DOM中的图片
 ###安装：npm install TopuNet-QueueLazyLoad
 
@@ -43,6 +43,9 @@ requireJS引用
 
 更新历史：
 -------------
+v1.0.2
+
+		1. 修改bug
 
 v1.0.1
 

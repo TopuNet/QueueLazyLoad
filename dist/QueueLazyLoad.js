@@ -1,7 +1,7 @@
 /*
-    v1.0.1
+    v1.0.2
     高京
-    2016-08-19
+    2016-08-31
     按照队列顺序延迟(懒)加载DOM中的图片
 */
 var QueueLazyLoad = {
@@ -72,7 +72,7 @@ var QueueLazyLoad = {
             _obj = $(LoadBg_obj[i]);
             _obj.attr("style", "background:" + _obj.attr("qll-bg")).removeAttr("qll-bg");
             img = new Image();
-            img.src = _obj[0].style.backgroundImage.replace("url(", "").replace(")", "").replace(/'/g, "")
+            img.src = _obj[0].style.backgroundImage.replace("url(", "").replace(")", "").replace(/'/g, "").replace(/"/g, "");
             if (img.complete)
                 loaded();
             else {
