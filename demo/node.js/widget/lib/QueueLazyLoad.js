@@ -1,7 +1,7 @@
 /*
-    v1.0.2
+    v1.0.3
     高京
-    2016-08-31
+    2016-08-19
     按照队列顺序延迟(懒)加载DOM中的图片
 */
 var QueueLazyLoad = {
@@ -69,35 +69,44 @@ var QueueLazyLoad = {
         var i = 0,
             len = LoadBg_obj.length;
         for (; i < len; i++) {
-            _obj = $(LoadBg_obj[i]);
-            _obj.attr("style", "background:" + _obj.attr("qll-bg")).removeAttr("qll-bg");
-            img = new Image();
-            img.src = _obj[0].style.backgroundImage.replace("url(", "").replace(")", "").replace(/'/g, "").replace(/"/g, "");
-            if (img.complete)
-                loaded();
-            else {
-                img.onload = function() {
+            (function(_i) {
+                var _obj = $(LoadBg_obj[_i]);
+                _obj.attr("style", "background:" + _obj.attr("qll-bg"));
+                _obj.removeAttr("qll-bg");
+                var img = new Image();
+                var src = _obj[0].style.backgroundImage.replace("url(", "").replace(")", "").replace(/'/g, "").replace(/"/g, "");
+                img.src = src;
+                if (img.complete)
                     loaded();
-                };
-            }
+                else {
+                    img.onload = function() {
+                        loaded();
+                    };
+                }
+            })(i);
         }
 
         // 预加载图片
         var j = 0,
             len2 = LoadImg_obj.length;
+
         for (; j < len2; j++) {
-            _obj = $(LoadImg_obj[j]);
-            img = new Image();
-            img.src = _obj.attr("qll-img");
-            if (img.complete) {
-                _obj.attr("src", img.src);
-                loaded();
-            } else {
-                img.onload = function() {
+
+            (function(_j) {
+                var _obj = $(LoadImg_obj[_j]);
+                var img = new Image();
+                img.src = _obj.attr("qll-img");
+                _obj.removeAttr("qll-img");
+                if (img.complete) {
                     _obj.attr("src", img.src);
                     loaded();
-                };
-            }
+                } else {
+                    img.onload = function() {
+                        _obj.attr("src", img.src);
+                        loaded();
+                    };
+                }
+            })(j);
         }
     }
 };

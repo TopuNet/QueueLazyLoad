@@ -1,6 +1,6 @@
 {
   "name": "TopuNet-QueueLazyLoad",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "按照队列顺序延迟(懒)加载DOM中的图片",
   "main": "QueueLazyLoad.js",
   "scripts": {
