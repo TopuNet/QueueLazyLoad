@@ -1,4 +1,4 @@
-# QueueLazyLoad 插件 v1.0.3
+# QueueLazyLoad 插件 v1.0.4
 ###按照队列顺序延迟(懒)加载DOM中的图片
 ###安装：npm install TopuNet-QueueLazyLoad
 
@@ -27,7 +27,7 @@ requireJS引用
 			如：<img qll-img="/images/logo.jpg" alt="logo" />
 
 		背景图将background写入属性 qll-bg 中，
-			如：<section class="banner start_hidden" qll-bg="url('/images/banner.png') center center / cover no-repeat;">
+			如：<section class="banner start_hidden" qll-bg="background: url('/images/banner.png') center center no-repeat; background-size: cover;">
 
 
 2. 启动方法：
@@ -43,6 +43,16 @@ requireJS引用
 
 更新历史：
 -------------
+v1.0.4
+
+		1. 为兼容IE7/8，调整背景图的调用方式：
+			a. background-size单写，如：
+				<section class="banner start_hidden" qll-bg="background: url('/images/banner.png') center center no-repeat; background-size: cover;">
+				IE7/8不支持background-size，但不影响backgroundImage的修改
+			b. 修改js文件。
+		2. 修改demo
+		3. 修改Readme
+
 v1.0.3
 
 		1. 修改图片加载完成后的装载循环bug，利用闭包
