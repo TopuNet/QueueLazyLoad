@@ -1,5 +1,5 @@
 /*
-    v1.0.4
+    v1.0.5
     高京
     2016-08-19
     按照队列顺序延迟(懒)加载DOM中的图片
@@ -47,7 +47,6 @@ var QueueLazyLoad = {
     // box_selector: 外盒选择器
     // load_success: 加载完成回调
     QueueLoad: function(Queue_index, box_selector, load_success) {
-        var _this = QueueLazyLoad;
         var LoadBg_obj = $(box_selector + "[qll-bg]," + box_selector + " [qll-bg]");
         var LoadImg_obj = $(box_selector + "[qll-img]," + box_selector + " [qll-img]");
         var loaded_count = 0; // 已加载数量
@@ -59,11 +58,9 @@ var QueueLazyLoad = {
         };
 
         // 无需加载
-        if (LoadBg_obj.length + LoadImg_obj.length == 0) {
+        if (LoadBg_obj.length + LoadImg_obj.length === 0) {
             loaded();
         }
-
-        var _obj, img;
 
         // 预加载背景
         var i = 0,
