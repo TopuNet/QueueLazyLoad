@@ -63,10 +63,8 @@ var QueueLazyLoad = {
         }
 
         // 预加载背景
-        var i = 0,
-            len = LoadBg_obj.length;
-        for (; i < len; i++) {
-            (function(_i) {
+        var loop_load_bg = function() {
+            return function(_i) {
                 var _obj = $(LoadBg_obj[_i]);
                 _obj.attr("style", _obj.attr("qll-bg"));
                 _obj.removeAttr("qll-bg");
@@ -80,16 +78,18 @@ var QueueLazyLoad = {
                         loaded();
                     };
                 }
-            })(i);
+            };
+        }();
+
+        var i = 0,
+            len = LoadBg_obj.length;
+        for (; i < len; i++) {
+            loop_load_bg(i);
         }
 
         // 预加载图片
-        var j = 0,
-            len2 = LoadImg_obj.length;
-
-        for (; j < len2; j++) {
-
-            (function(_j) {
+        var loop_load_img = function() {
+            return function(_j) {
                 var _obj = $(LoadImg_obj[_j]);
                 var img = new Image();
                 img.src = _obj.attr("qll-img");
@@ -103,7 +103,13 @@ var QueueLazyLoad = {
                         loaded();
                     };
                 }
-            })(j);
+            };
+        }();
+
+        var j = 0,
+            len2 = LoadImg_obj.length;
+        for (; j < len2; j++) {
+            loop_load_img(j);
         }
     }
 };

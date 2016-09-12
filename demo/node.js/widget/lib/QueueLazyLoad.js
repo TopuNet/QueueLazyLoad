@@ -1,5 +1,5 @@
 /*
-    v1.0.4
+    v1.0.5
     高京
     2016-08-19
     按照队列顺序延迟(懒)加载DOM中的图片
@@ -47,7 +47,6 @@ var QueueLazyLoad = {
     // box_selector: 外盒选择器
     // load_success: 加载完成回调
     QueueLoad: function(Queue_index, box_selector, load_success) {
-        var _this = QueueLazyLoad;
         var LoadBg_obj = $(box_selector + "[qll-bg]," + box_selector + " [qll-bg]");
         var LoadImg_obj = $(box_selector + "[qll-img]," + box_selector + " [qll-img]");
         var loaded_count = 0; // 已加载数量
@@ -59,17 +58,13 @@ var QueueLazyLoad = {
         };
 
         // 无需加载
-        if (LoadBg_obj.length + LoadImg_obj.length == 0) {
+        if (LoadBg_obj.length + LoadImg_obj.length === 0) {
             loaded();
         }
 
-        var _obj, img;
-
         // 预加载背景
-        var i = 0,
-            len = LoadBg_obj.length;
-        for (; i < len; i++) {
-            (function(_i) {
+        var loop_load_bg = function() {
+            return function(_i) {
                 var _obj = $(LoadBg_obj[_i]);
                 _obj.attr("style", _obj.attr("qll-bg"));
                 _obj.removeAttr("qll-bg");
@@ -83,16 +78,18 @@ var QueueLazyLoad = {
                         loaded();
                     };
                 }
-            })(i);
+            };
+        }();
+
+        var i = 0,
+            len = LoadBg_obj.length;
+        for (; i < len; i++) {
+            loop_load_bg(i);
         }
 
         // 预加载图片
-        var j = 0,
-            len2 = LoadImg_obj.length;
-
-        for (; j < len2; j++) {
-
-            (function(_j) {
+        var loop_load_img = function() {
+            return function(_j) {
                 var _obj = $(LoadImg_obj[_j]);
                 var img = new Image();
                 img.src = _obj.attr("qll-img");
@@ -106,7 +103,13 @@ var QueueLazyLoad = {
                         loaded();
                     };
                 }
-            })(j);
+            };
+        }();
+
+        var j = 0,
+            len2 = LoadImg_obj.length;
+        for (; j < len2; j++) {
+            loop_load_img(j);
         }
     }
 };
