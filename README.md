@@ -33,7 +33,7 @@ requireJS引用
 2. 启动方法：
 
 		$(function(){
-			QueueLazyLoad({
+			QueueLazyLoad.init({
 	            Queue: ["body"], // 加载DOM选择器队列，数组。此队列中含有"qll-"属性的图片和背景全部加载完成后，会执行回调 并 开始执行下一个选择器的加载，如：["section.top","#main","div.footer"]。默认["body"]。
 	            Callback_success_Queue: null, // 队列中每个DOM完成时的回调，方法数组。无默认值。如：[function(){ alert("aa"); },function(){ alert("bb"); },function(){ alert("cc"); }]
 	            Callback_success_All: null, // 队列全部加载后的回调
