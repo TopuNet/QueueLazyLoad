@@ -1,5 +1,5 @@
 /*
-    v1.0.5
+    v1.0.6
     高京
     2016-08-19
     按照队列顺序延迟(懒)加载DOM中的图片
@@ -71,12 +71,16 @@ var QueueLazyLoad = {
                 var img = new Image();
                 var src = _obj[0].style.backgroundImage.replace("url(", "").replace(")", "").replace(/'/g, "").replace(/"/g, "");
                 img.src = src;
-                if (img.complete)
+                if (img.complete) {
                     loaded();
-                else {
+                } else {
                     img.onload = function() {
                         loaded();
                     };
+                    img.onerror = function() {
+                        loaded();
+                    };
+
                 }
             };
         }();
@@ -100,6 +104,9 @@ var QueueLazyLoad = {
                 } else {
                     img.onload = function() {
                         _obj.attr("src", img.src);
+                        loaded();
+                    };
+                    img.onerror = function() {
                         loaded();
                     };
                 }
