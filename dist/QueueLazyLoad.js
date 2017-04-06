@@ -1,5 +1,5 @@
 /*
-    v1.0.6
+    v1.0.7
     高京
     2016-08-19
     按照队列顺序延迟(懒)加载DOM中的图片
@@ -9,7 +9,7 @@ var QueueLazyLoad = {
         var opt_default = {
             Queue: ["body"], // 加载DOM选择器队列，数组。默认["body"]。如：["section.top","#main","div.footer"]
             Callback_success_Queue: null, // 队列中每个DOM完成时的回调，方法数组。无默认值。如：[function(){ alert("aa"); },function(){ alert("bb"); },function(){ alert("cc"); }]
-            Callback_success_All: null, // 队列全部加载后的回调
+            Callback_success_All: null // 队列全部加载后的回调
         };
 
         this.opt = $.extend(opt_default, opt);
