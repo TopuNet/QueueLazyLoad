@@ -1,4 +1,4 @@
-# QueueLazyLoad 插件 v1.0.7
+# QueueLazyLoad 插件 v1.1.1
 ### 按照队列顺序延迟(懒)加载DOM中的图片
 ### 安装：npm install TopuNet-QueueLazyLoad
 
@@ -33,7 +33,8 @@ requireJS引用
 2. 启动方法：
 
 		$(function(){
-			QueueLazyLoad.init({
+			var qll = new QueueLazyLoad();
+			qll.init({
 	            Queue: ["body"], // 加载DOM选择器队列，数组。此队列中含有"qll-"属性的图片和背景全部加载完成后，会执行回调 并 开始执行下一个选择器的加载，如：["section.top","#main","div.footer"]。默认["body"]。
 	            Callback_success_Queue: null, // 队列中每个DOM完成时的回调，方法数组。无默认值。如：[function(){ alert("aa"); },function(){ alert("bb"); },function(){ alert("cc"); }]
 	            Callback_success_All: null // 队列全部加载后的回调
@@ -43,6 +44,11 @@ requireJS引用
 
 更新历史：
 -------------
+v1.1.1 (2017-07-20)
+
+		1. 允许一个页面中创建多个轮询实例，各自设置自己的逻辑。
+		2. 相应的，修改启动方法（见上文说明）
+		
 v1.0.7
 
 		1. 修改opt_default多一个逗号的bug

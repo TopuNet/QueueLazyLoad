@@ -1,17 +1,19 @@
 /*
-	20160802
-	白梦超
-	首页运动效果
+    20160802
+    白梦超
+    首页运动效果
 */
 
 define(['modules/index_height100', 'modules/index_scroll_down', 'modules/nav_still_top', 'modules/leav_message_window', 'modules/qq_message_window', 'modules/background_change', 'modules/index_banner_switch', 'modules/index_reversal_ninebox', 'modules/goto_top', 'modules/mask', 'modules/index_cascade', 'modules/screen_mouseMove', 'lib/GrayScale', 'modules/index_triangle_fall', 'lib/QueueLazyLoad', 'lib/jquery.min'], function($index_height100, $index_scroll_down, $nav_still_top, $leav_message_window, $qq_message_window, $background_change, $index_banner_switch, $index_reversal_ninebox, $goto_top, $mask, $index_cascade, $screen_mouseMove, $GrayScale, $index_triangle_fall, $QueueLazyLoad) {
     var index = {
-        
+
 
 
         init: function() {
 
-            var QueueLazyLoad_opt = {
+            var qll = new $QueueLazyLoad();
+
+            var qll_opt = {
                 Queue: ["section.banner", "section.html_nav_bao", "section.imagine", "section.service", "section.topu"],
                 Callback_success_Queue: [function() {
                         console.log("section.banner loaded");
@@ -20,10 +22,10 @@ define(['modules/index_height100', 'modules/index_scroll_down', 'modules/nav_sti
                     function() {
                         console.log("section.html_nav_bao loaded");
                     },
-                    function(){
+                    function() {
                         console.log("section.imagine loaded");
                         $("section.banner div.click_down").fadeIn(200, function() {
-                        	
+
                             //监听顶部banner中的按钮点击
                             var index_scroll_down = {
                                 big_box: "section.banner",
@@ -32,10 +34,10 @@ define(['modules/index_height100', 'modules/index_scroll_down', 'modules/nav_sti
                             $index_scroll_down.init(index_scroll_down);
                         });
                     },
-                    function(){
+                    function() {
                         console.log("section.service loaded");
                     },
-                    function(){
+                    function() {
                         console.log("section.topu loaded");
                     }
                 ],
@@ -43,7 +45,7 @@ define(['modules/index_height100', 'modules/index_scroll_down', 'modules/nav_sti
                     console.log("mission complete");
                 }
             };
-            $QueueLazyLoad.init(QueueLazyLoad_opt);
+            qll.init(qll_opt);
 
             return;
 
